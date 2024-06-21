@@ -29,3 +29,48 @@ h4 {
 .bg-dark {
     background-color: rgb(33, 75, 65) !important;
 }
+
+@media print {
+    :root {
+        font-size: 13px;
+    }
+
+    .row:not(:last-child) {
+        page-break-after: always
+    }
+
+    .container {
+        max-width: 100%;
+    }
+
+    .bg-dark {
+        background-color: $light !important;
+    }
+
+    .text-light {
+        color: $dark !important;
+    }
+
+    .progress {
+        position: relative;
+        &:before {
+            display: block;
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 0;
+            border-bottom: 0.5rem solid $progress-bar-bg;
+        }
+        &-bar {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 1;
+            border-bottom: 0.5rem solid $progress-bg;
+        }
+    }
+  }

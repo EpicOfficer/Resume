@@ -1,3 +1,5 @@
+import "../scss/site.scss"
+
 import * as React from "react"
 import { Link, HeadFC, PageProps } from "gatsby"
 import { Col, Container, Row } from "react-bootstrap"

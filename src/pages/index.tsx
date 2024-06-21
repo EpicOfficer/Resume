@@ -1,8 +1,10 @@
+import "../scss/site.scss"
+
 import * as React from "react"
 import { MDXProvider } from '@mdx-js/react'
-import { Link, type HeadFC, type PageProps } from "gatsby"
-import "../scss/site.scss"
-import { Col, Container, ProgressBar, Row } from "react-bootstrap"
+import { type HeadFC, type PageProps } from "gatsby"
+import { Col, Container, Row } from "react-bootstrap"
+
 import Details from "../markdown/details.mdx"
 import Links from "../markdown/links.mdx"
 import Profile from "../markdown/profile.mdx"
@@ -28,14 +30,14 @@ const IndexPage: React.FC<PageProps> = ({data}) => {
     <MDXProvider components={components}>
       <Container>
         <Row>
-          <Col lg="3" className="p-5 bg-dark text-light">
+          <Col lg="3" sm="4" className="p-4 pb-2 p-sm-2 p-lg-4 p-xl-5 bg-dark text-light">
             <section className="mb-4">
               <Avatar />
             </section>
             <section className="mb-4">
               <Details />
             </section>
-            <section className="mb-4">
+            <section className="mb-4 d-print-none">
               <Links />
             </section>
             <section className="mb-4">
@@ -45,7 +47,7 @@ const IndexPage: React.FC<PageProps> = ({data}) => {
               <Skills />
             </section>
           </Col>
-          <Col lg="9" className="p-5">
+          <Col lg="9" sm="8" className="p-4 pb-2 p-sm-2 p-lg-4 p-xl-5">
             <section className="mb-4">
               <Profile />
             </section>
@@ -58,10 +60,10 @@ const IndexPage: React.FC<PageProps> = ({data}) => {
           </Col>
         </Row>
         <Row>
-          <Col lg="3" className="p-5 pt-lg-0 bg-dark text-light">
+          <Col lg="3" sm="4" className="p-4 pb-2 p-sm-2 p-lg-4 p-xl-5 pt-lg-0 pt-xl-0 bg-dark text-light">
             <Hobbies />
           </Col>
-          <Col lg="9" className="p-5 pt-lg-0">
+          <Col lg="9" sm="8" className="p-4 pb-2 p-sm-2 p-lg-4 p-xl-5 pt-lg-0 pt-xl-0">
             <Activities />
           </Col>
         </Row>
