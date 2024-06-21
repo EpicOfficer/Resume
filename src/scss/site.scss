@@ -13,3 +13,19 @@
 @import "node_modules/bootstrap/scss/grid";
 @import "node_modules/bootstrap/scss/helpers";
 @import "node_modules/bootstrap/scss/utilities/api";
+
+a { 
+    color: inherit;
+
+    :visited {
+        color:inherit;
+    }
+}
+
+h4 {
+    color: rgb(149,155,166)
+}
+
+.bg-dark {
+    background-color: rgb(33, 75, 65) !important;
+}

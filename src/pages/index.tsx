@@ -1,9 +1,10 @@
 import * as React from "react"
 import { MDXProvider } from '@mdx-js/react'
-import { type HeadFC, type PageProps } from "gatsby"
+import { Link, type HeadFC, type PageProps } from "gatsby"
 import "../scss/site.scss"
 import { Col, Container, ProgressBar, Row } from "react-bootstrap"
 import Details from "../markdown/details.mdx"
+import Links from "../markdown/links.mdx"
 import Profile from "../markdown/profile.mdx"
 import Employment from "../markdown/employment.mdx"
 import Education from "../markdown/education.mdx"
@@ -19,7 +20,7 @@ const components = {
   h3: (props: React.HTMLAttributes<HTMLHeadingElement>) => <h4 {...props} />,
   h4: (props: React.HTMLAttributes<HTMLHeadingElement>) => <h5 {...props} />,
   h5: (props: React.HTMLAttributes<HTMLHeadingElement>) => <h6 {...props} />,
-  h6: (props: React.HTMLAttributes<HTMLHeadingElement>) => <p {...props} className="font-weight-bold" />,
+  h6: (props: React.HTMLAttributes<HTMLHeadingElement>) => <p {...props} className="fw-bold" />,
 }
 
 const IndexPage: React.FC<PageProps> = ({data}) => {
@@ -28,16 +29,19 @@ const IndexPage: React.FC<PageProps> = ({data}) => {
       <Container>
         <Row>
           <Col lg="3" className="p-5 bg-dark text-light">
-            <section>
+            <section className="mb-4">
               <Avatar />
             </section>
-            <section>
+            <section className="mb-4">
               <Details />
             </section>
-            <section>
+            <section className="mb-4">
+              <Links />
+            </section>
+            <section className="mb-4">
               <Languages />
             </section>
-            <section>
+            <section className="mb-4">
               <Skills />
             </section>
           </Col>
