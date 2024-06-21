@@ -32,7 +32,7 @@ h4 {
 
 @media print {
     :root {
-        font-size: 13px;
+        font-size: 13.675px;
     }
 
     .row:not(:last-child) {
@@ -53,6 +53,9 @@ h4 {
 
     .progress {
         position: relative;
+        background-color: transparent;
+        border: 1px solid $dark;
+        height: 0.75rem;
         &:before {
             display: block;
             content: '';
@@ -62,15 +65,16 @@ h4 {
             bottom: 0;
             left: 0;
             z-index: 0;
-            border-bottom: 0.5rem solid $progress-bar-bg;
+            border-bottom: 0.75rem solid $progress-bar-bg;
         }
         &-bar {
+            background-color: transparent;
             position: absolute;
             top: 0;
             bottom: 0;
             left: 0;
             z-index: 1;
-            border-bottom: 0.5rem solid $progress-bg;
+            border-bottom: 0.75rem solid $progress-bg;
         }
     }
   }
