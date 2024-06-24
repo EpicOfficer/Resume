@@ -30,7 +30,7 @@ const IndexPage: React.FC<PageProps> = ({data}) => {
     <MDXProvider components={components}>
       <Container>
         <Row>
-          <Col lg="3" sm="4" className="p-4 pb-2 p-sm-2 p-lg-4 p-xl-5 bg-dark text-light">
+          <Col lg="3" sm="4" className="p-4 pb-2 p-sm-3 p-lg-4 p-xl-5 bg-dark text-light">
             <section className="mb-4">
               <Avatar />
             </section>
@@ -47,7 +47,7 @@ const IndexPage: React.FC<PageProps> = ({data}) => {
               <Skills />
             </section>
           </Col>
-          <Col lg="9" sm="8" className="p-4 pb-2 p-sm-2 p-lg-4 p-xl-5">
+          <Col lg="9" sm="8" className="p-4 pb-2 p-sm-3 p-lg-4 p-xl-5">
             <section className="mb-4">
               <Profile />
             </section>
@@ -60,10 +60,10 @@ const IndexPage: React.FC<PageProps> = ({data}) => {
           </Col>
         </Row>
         <Row>
-          <Col lg="3" sm="4" className="p-4 pb-2 p-sm-2 p-lg-4 p-xl-5 pt-lg-0 pt-xl-0 bg-dark text-light">
+          <Col lg="3" sm="4" className="p-4 pb-2 p-sm-3 p-lg-4 p-xl-5 pt-lg-0 pt-xl-0 bg-dark text-light">
             <Hobbies />
           </Col>
-          <Col lg="9" sm="8" className="p-4 pb-2 p-sm-2 p-lg-4 p-xl-5 pt-lg-0 pt-xl-0">
+          <Col lg="9" sm="8" className="p-4 pb-2 p-sm-3 p-lg-4 p-xl-5 pt-lg-0 pt-xl-0">
             <Activities />
           </Col>
         </Row>
