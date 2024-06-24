@@ -10,7 +10,7 @@ interface SkillProps {
 
 export default function Skill({ level, children }: SkillProps) {
     return (
-      <div className="mb-2">
+      <div className="skill">
         <p className="mb-0">{children}</p>
         <ProgressBar now={level}></ProgressBar>
       </div>
