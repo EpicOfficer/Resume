@@ -35,13 +35,16 @@ const components = {
   },
 }
 
+const name = "***REMOVED***";
+const jobTitle = "Full Stack Developer";
+
 const IndexPage: React.FC<PageProps> = ({data}) => {
   return (
     <MDXProvider components={components}>
       <Container>
         <Row>
           <Col lg="3" sm="4" className="p-4 pb-2 p-sm-3 p-lg-4 p-xl-5 bg-dark text-light">
-            <Avatar />
+            <Avatar name={name} jobTitle={jobTitle} />
             <Details />
             <Links />
             <SkillWrapper>
@@ -70,4 +73,4 @@ const IndexPage: React.FC<PageProps> = ({data}) => {
 
 export default IndexPage
 
-export const Head: HeadFC = () => <title>***REMOVED*** - Full Stack Developer</title>
+export const Head: HeadFC = () => <title>{name} - {jobTitle}</title>
