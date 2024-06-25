@@ -4,6 +4,7 @@ import * as React from "react"
 import { MDXProvider } from '@mdx-js/react'
 import { type HeadFC, type PageProps } from "gatsby"
 import { Col, Container, Row } from "react-bootstrap"
+import Skill from "../components/Skill"
 
 import Details from "../markdown/details.mdx"
 import Links from "../markdown/links.mdx"
@@ -24,6 +25,11 @@ const components = {
   h4: (props: React.HTMLAttributes<HTMLHeadingElement>) => <h5 {...props} />,
   h5: (props: React.HTMLAttributes<HTMLHeadingElement>) => <h6 {...props} />,
   h6: (props: React.HTMLAttributes<HTMLHeadingElement>) => <p {...props} className="fw-bold" />,
+  Skill: Skill,
+  // Pass a layout (using the special `'wrapper'` key).
+  wrapper({...rest}) {
+    return <section className="mb-4" {...rest} />
+  },
 }
 
 const IndexPage: React.FC<PageProps> = ({data}) => {
@@ -32,43 +38,25 @@ const IndexPage: React.FC<PageProps> = ({data}) => {
       <Container>
         <Row>
           <Col lg="3" sm="4" className="p-4 pb-2 p-sm-3 p-lg-4 p-xl-5 bg-dark text-light">
-            <section className="mb-4">
-              <Avatar />
-            </section>
-            <section className="mb-4">
-              <Details />
-            </section>
-            <section className="mb-4">
-              <Links />
-            </section>
-            <section className="mb-4">
-              <SkillWrapper>
-                <Languages />
-              </SkillWrapper>
-            </section>
-            <section className="mb-4">
-              <SkillWrapper>
-                <Skills />
-              </SkillWrapper>
-            </section>
+            <Avatar />
+            <Details />
+            <Links />
+            <SkillWrapper>
+              <Languages />
+              <Skills />
+            </SkillWrapper>
           </Col>
           <Col lg="9" sm="8" className="p-4 pb-2 p-sm-3 p-lg-4 p-xl-5">
-            <section className="mb-4">
-              <Profile />
-            </section>
-            <section className="mb-4">
-              <Employment />
-            </section>
-            <section>
-              <Education />
-            </section>
+            <Profile />
+            <Employment />
+            <Education />
           </Col>
         </Row>
         <Row>
-          <Col lg="3" sm="4" className="p-4 pb-2 p-sm-3 p-lg-4 p-xl-5 pt-lg-0 pt-xl-0 bg-dark text-light">
+          <Col lg="3" sm="4" className="p-4 pb-0 p-sm-3 p-lg-4 p-xl-5 pt-lg-0 pt-xl-0 bg-dark text-light">
             <Hobbies />
           </Col>
-          <Col lg="9" sm="8" className="p-4 pb-2 p-sm-3 p-lg-4 p-xl-5 pt-lg-0 pt-xl-0">
+          <Col lg="9" sm="8" className="p-4 p-sm-3 p-lg-4 p-xl-5 pt-lg-0 pt-xl-0">
             <Activities />
           </Col>
         </Row>
