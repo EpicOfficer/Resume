@@ -38,7 +38,7 @@ const IndexPage: React.FC<PageProps> = ({data}) => {
             <section className="mb-4">
               <Details />
             </section>
-            <section className="mb-4 d-print-none">
+            <section className="mb-4">
               <Links />
             </section>
             <section className="mb-4">
