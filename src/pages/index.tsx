@@ -15,6 +15,7 @@ import Skills from "../markdown/skills.mdx"
 import Hobbies from "../markdown/hobbies.mdx"
 import Activities from "../markdown/activities.mdx"
 import Avatar from "../components/Avatar"
+import SkillWrapper from "../components/SkillWrapper"
 
 const components = {
   h1: (props: React.HTMLAttributes<HTMLHeadingElement>) => <h2 {...props} />,
@@ -41,10 +42,14 @@ const IndexPage: React.FC<PageProps> = ({data}) => {
               <Links />
             </section>
             <section className="mb-4">
-              <Languages />
+              <SkillWrapper>
+                <Languages />
+              </SkillWrapper>
             </section>
             <section className="mb-4">
-              <Skills />
+              <SkillWrapper>
+                <Skills />
+              </SkillWrapper>
             </section>
           </Col>
           <Col lg="9" sm="8" className="p-4 pb-2 p-sm-3 p-lg-4 p-xl-5">

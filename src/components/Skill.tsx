@@ -9,10 +9,10 @@ interface SkillProps {
 }
 
 export default function Skill({ level, children }: SkillProps) {
-    return (
-      <div className="skill mb-3">
-        <p className="mb-0">{children}</p>
-        <ProgressBar now={level}></ProgressBar>
-      </div>
-    );
-  }
+  return (
+    <div className="skill mb-3">
+      <p className="mb-0">{children}</p>
+      <ProgressBar now={level}></ProgressBar>
+    </div>
+  );
+}

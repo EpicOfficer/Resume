@@ -9,4 +9,4 @@ export default function Avatar() {
             <p>Full Stack Developer</p>
         </div>
     );
-  }
+}
