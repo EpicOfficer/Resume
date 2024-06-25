@@ -4,7 +4,11 @@ import * as React from "react"
 import { MDXProvider } from '@mdx-js/react'
 import { type HeadFC, type PageProps } from "gatsby"
 import { Col, Container, Row } from "react-bootstrap"
+
+import SkillWrapper from "../components/SkillWrapper"
 import Skill from "../components/Skill"
+import Avatar from "../components/Avatar"
+import PrintOnly from "../components/PrintOnly"
 
 import Details from "../markdown/details.mdx"
 import Links from "../markdown/links.mdx"
@@ -15,8 +19,6 @@ import Languages from "../markdown/languages.mdx"
 import Skills from "../markdown/skills.mdx"
 import Hobbies from "../markdown/hobbies.mdx"
 import Activities from "../markdown/activities.mdx"
-import Avatar from "../components/Avatar"
-import SkillWrapper from "../components/SkillWrapper"
 
 const components = {
   h1: (props: React.HTMLAttributes<HTMLHeadingElement>) => <h2 {...props} />,
@@ -26,6 +28,7 @@ const components = {
   h5: (props: React.HTMLAttributes<HTMLHeadingElement>) => <h6 {...props} />,
   h6: (props: React.HTMLAttributes<HTMLHeadingElement>) => <p {...props} className="fw-bold" />,
   Skill: Skill,
+  PrintOnly: PrintOnly,
   // Pass a layout (using the special `'wrapper'` key).
   wrapper({...rest}) {
     return <section className="mb-4" {...rest} />
