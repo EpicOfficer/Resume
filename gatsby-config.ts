@@ -1,5 +1,9 @@
 import type { GatsbyConfig } from "gatsby";
 
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `Resume`,
@@ -28,13 +32,13 @@ const config: GatsbyConfig = {
       "path": "./src/pages/"
     },
     __key: "pages"
-  }, {
-    resolve: 'gatsby-source-filesystem',
+  },
+  {
+    resolve: 'gatsby-source-contentful',
     options: {
-      "name": "markdown",
-      "path": "./src/markdown/"
+      spaceId: process.env.CONTENTFUL_SPACE_ID!,
+      accessToken: process.env.CONTENTFUL_ACCESS_TOKEN!,
     },
-    __key: "markdown"
   }]
 };
 
