@@ -100,7 +100,7 @@ const IndexPage = ({data}: PageProps<Queries.PortfolioQueryQuery>) => {
             <h2>Extra-curricular Activities</h2>
             {portfolio.activities?.map((activity, index) => (
               <div key={index}>
-                <h3>{activity?.title}</h3>
+                <h3>{activity?.title}, {activity?.location}</h3>
                 <h4>{activity?.year}</h4>
                 <p>
                   {activity?.fullDescription?.raw && documentToReactComponents(JSON.parse(activity.fullDescription.raw))}

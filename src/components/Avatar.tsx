@@ -9,12 +9,12 @@ interface AvatarProps {
 
 export default function Avatar({name, jobTitle, image}: AvatarProps) {
     return (
-        <div className="text-center">
+        <section className="text-center">
             {image && (
                 <GatsbyImage alt={name} image={image} class="mx-5 mb-3 rounded-circle" />
             )}
             <h1>{name}</h1>
             <p>{jobTitle}</p>
-        </div>
+        </section>
     );
 }
