@@ -45,9 +45,9 @@ const IndexPage = ({data}: PageProps<Queries.PortfolioQuery>) => {
         <Container>
             <Row>
                 <Col sm={leftColumnCountSm} lg={leftColumnCountLg} className={leftColumnClassNames}>
-                    <Avatar name={portfolio.details?.fullName ?? ""}
-                            jobTitle={portfolio.details?.jobTitle ?? ""}
-                            image={portfolio.details?.profileImage?.gatsbyImage}/>
+                    <Avatar name={portfolio.details?.fullName}
+                            jobTitle={portfolio.details?.jobTitle}
+                            image={portfolio.details?.profileImage?.gatsbyImage} />
 
                     <DetailsSection details={portfolio.details}/>
                     <LinksSection links={portfolio.details?.links}/>
