@@ -26,7 +26,7 @@ export default function EducationSection({education}: EducationProps) {
                 <div key={index}>
                     <h3>{edu?.institutionName}</h3>
                     <h4>{formatDate(edu?.startDate)}{edu?.endDate && ` - ${formatDate(edu.endDate)}`}</h4>
-                    <p>{edu?.description?.raw && documentToReactComponents(JSON.parse(edu.description.raw))}</p>
+                    {edu?.description?.raw && documentToReactComponents(JSON.parse(edu.description.raw))}
                 </div>
             ))}
         </section>

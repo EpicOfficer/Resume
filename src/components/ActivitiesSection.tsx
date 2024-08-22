@@ -25,7 +25,7 @@ export default function ActivitiesSection({activities}: ActivitiesProps) {
                 <div key={index}>
                     <h3>{activity?.title}, {activity?.location}</h3>
                     <h4>{activity?.year}</h4>
-                    <p>{activity?.fullDescription?.raw && documentToReactComponents(JSON.parse(activity.fullDescription.raw))}</p>
+                    {activity?.fullDescription?.raw && documentToReactComponents(JSON.parse(activity.fullDescription.raw))}
                 </div>
             ))}
         </section>
