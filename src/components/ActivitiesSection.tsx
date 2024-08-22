@@ -1,9 +1,21 @@
 import {documentToReactComponents} from "@contentful/rich-text-react-renderer";
 import * as React from "react";
+import {graphql} from "gatsby";
 
 type ActivitiesProps = {
     activities: Queries.Maybe<ReadonlyArray<Queries.Maybe<Queries.ActivitiesFieldsFragment>>>
 }
+
+export const query = graphql`
+    fragment ActivitiesFields on ContentfulExtraCurricularSection {
+        title
+        year
+        location
+        fullDescription {
+            raw
+        }
+    }
+`;
 
 export default function ActivitiesSection({activities}: ActivitiesProps) {
     return (

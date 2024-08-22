@@ -1,12 +1,24 @@
 import {formatDate} from "../utils/dateUtils";
 import {documentToReactComponents} from "@contentful/rich-text-react-renderer";
 import * as React from "react";
+import {graphql} from "gatsby";
 
 type EducationProps = {
     education: Queries.Maybe<ReadonlyArray<Queries.Maybe<Queries.EducationFieldsFragment>>>
 }
 
-export default function EducationSection({ education }: EducationProps) {
+export const query = graphql`
+    fragment EducationFields on ContentfulEducationSection {
+        startDate
+        endDate
+        description {
+            raw
+        }
+        institutionName
+    }
+`;
+
+export default function EducationSection({education}: EducationProps) {
     return (
         <section>
             <h2>Education</h2>

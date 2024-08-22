@@ -1,12 +1,27 @@
 import {formatDate} from "../utils/dateUtils";
 import {documentToReactComponents} from "@contentful/rich-text-react-renderer";
 import * as React from "react";
+import {graphql} from "gatsby";
 
 type EmploymentHistoryProps = {
     employmentHistory: Queries.Maybe<ReadonlyArray<Queries.Maybe<Queries.EmploymentHistoryFieldsFragment>>>
 }
 
-export default function EmploymentHistorySection({ employmentHistory }: EmploymentHistoryProps) {
+export const query = graphql`
+    fragment EmploymentHistoryFields on ContentfulEmploymentHistorySection {
+        companyName {
+            companyName
+        }
+        endDate
+        jobTitle
+        startDate
+        description {
+            raw
+        }
+    }
+`;
+
+export default function EmploymentHistorySection({employmentHistory}: EmploymentHistoryProps) {
     return (
         <section>
             <h2>Employment History</h2>

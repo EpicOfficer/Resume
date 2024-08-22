@@ -3,8 +3,6 @@ import * as React from "react"
 import {graphql, type PageProps} from "gatsby"
 import {Col, Container, Row} from "react-bootstrap"
 import Avatar from "../components/Avatar"
-import {documentToReactComponents} from "@contentful/rich-text-react-renderer"
-import {formatDate} from "../utils/dateUtils"
 import DetailsSection from "../components/DetailsSection";
 import LinksSection from "../components/LinksSection";
 import LanguagesSection from "../components/LanguagesSection";
@@ -13,82 +11,9 @@ import EducationSection from "../components/EducationSection";
 import EmploymentHistorySection from "../components/EmploymentHistorySection";
 import HobbiesSection from "../components/HobbiesSection";
 import ActivitiesSection from "../components/ActivitiesSection";
+import Sections from "../components/Sections";
 
 export const query = graphql`
-    fragment SkillFields on ContentfulSkill {
-        name
-        skillLevel
-    }
-    
-    fragment SectionFields on ContentfulMarkdownSection {
-        title
-        content {
-            raw
-        }
-    }
-    
-    fragment LanguageFields on ContentfulLanguageSection {
-        language
-        skillLevel
-    }
-    
-    fragment EmploymentHistoryFields on ContentfulEmploymentHistorySection {
-        companyName {
-            companyName
-        }
-        endDate
-        jobTitle
-        startDate
-        description {
-            raw
-        }
-    }
-    
-    fragment LinkFields on ContentfulSocialLinks {
-        name
-        url
-    }
-    
-    fragment DetailsFields on ContentfulPersonalDetails {
-        email
-        fullName
-        jobTitle
-        location
-        phone
-        profileImage {
-            gatsbyImage(width: 160, height: 160)
-            file {
-                details {
-                    image {
-                        width
-                        height
-                    }
-                }
-            }
-        }
-        links {
-            ...LinkFields
-        }
-    }
-    
-    fragment ActivitiesFields on ContentfulExtraCurricularSection {
-        title
-        year
-        location
-        fullDescription {
-            raw
-        }
-    }
-    
-    fragment EducationFields on ContentfulEducationSection {
-        startDate
-        endDate
-        description {
-            raw
-        }
-        institutionName
-    }
-    
     query Portfolio {
         contentfulPortfolio {
             title
@@ -113,18 +38,9 @@ export const Head = ({data}: PageProps<Queries.PortfolioQuery>) => (
     <title>{data.contentfulPortfolio?.title ?? "Resume"}</title>
 );
 
-const renderSections = (sections) => {
-    return sections?.map((section, index) => (
-        <section key={index}>
-            <h2>{section?.title}</h2>
-            {section?.content?.raw && documentToReactComponents(JSON.parse(section.content.raw))}
-        </section>
-    ));
-};
-
 const IndexPage = ({data}: PageProps<Queries.PortfolioQuery>) => {
     const portfolio = data.contentfulPortfolio!
-    
+
     return (
         <Container>
             <Row>
@@ -133,16 +49,15 @@ const IndexPage = ({data}: PageProps<Queries.PortfolioQuery>) => {
                             jobTitle={portfolio.details?.jobTitle ?? ""}
                             image={portfolio.details?.profileImage?.gatsbyImage}/>
 
-                    <DetailsSection details={portfolio.details} />
-                    <LinksSection links={portfolio.details?.links} />
-                    <LanguagesSection languages={portfolio.languages} />
-                    <SkillsSection skills={portfolio.skills} />
+                    <DetailsSection details={portfolio.details}/>
+                    <LinksSection links={portfolio.details?.links}/>
+                    <LanguagesSection languages={portfolio.languages}/>
+                    <SkillsSection skills={portfolio.skills}/>
                 </Col>
                 <Col className={rightColumnClassNames}>
-                    {renderSections(portfolio.sections)}
-
-                    <EmploymentHistorySection employmentHistory={portfolio.employmentHistory} />
-                    <EducationSection education={portfolio.education} />
+                    <Sections sections={portfolio.sections}/>
+                    <EmploymentHistorySection employmentHistory={portfolio.employmentHistory}/>
+                    <EducationSection education={portfolio.education}/>
                 </Col>
             </Row>
             <Row>
