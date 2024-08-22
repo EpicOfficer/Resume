@@ -6,8 +6,7 @@ require("dotenv").config({
 
 const config: GatsbyConfig = {
     siteMetadata: {
-        title: `Resume`,
-        siteUrl: `https://collis.email`
+        siteUrl: process.env.SITE_URL
     },
     // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
     // If you use VSCode you can also use the GraphQL plugin
