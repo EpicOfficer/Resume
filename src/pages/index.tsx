@@ -11,7 +11,7 @@ import Avatar from "../components/Avatar"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { formatDate } from "../utils/dateUtils"
 
-const IndexPage = ({data}: PageProps<Queries.PortfolioQueryQuery>) => {
+const IndexPage = ({data}: PageProps<Queries.PortfolioQuery>) => {
   const portfolio = data.contentfulPortfolio!
 
   return (
@@ -114,8 +114,12 @@ const IndexPage = ({data}: PageProps<Queries.PortfolioQueryQuery>) => {
   )
 }
 
+export const Head = ({ data }: PageProps<Queries.PortfolioQuery>) => (
+    <title>{data.contentfulPortfolio?.title ?? "Resume"}</title>
+);
+
 export const query = graphql`
-  query PortfolioQuery {
+  query Portfolio {
     contentfulPortfolio {
       title
       skills {
@@ -187,5 +191,3 @@ export const query = graphql`
 `
 
 export default IndexPage
-
-export const Head: HeadFC = () => <title>***REMOVED***</title>
