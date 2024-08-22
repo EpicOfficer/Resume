@@ -1,0 +1,21 @@
+import {documentToReactComponents} from "@contentful/rich-text-react-renderer";
+import * as React from "react";
+
+type ActivitiesProps = {
+    activities: Queries.Maybe<ReadonlyArray<Queries.Maybe<Queries.ActivitiesFieldsFragment>>>
+}
+
+export default function ActivitiesSection({activities}: ActivitiesProps) {
+    return (
+        <section>
+            <h2>Extra-curricular Activities</h2>
+            {activities?.map((activity, index) => (
+                <div key={index}>
+                    <h3>{activity?.title}, {activity?.location}</h3>
+                    <h4>{activity?.year}</h4>
+                    <p>{activity?.fullDescription?.raw && documentToReactComponents(JSON.parse(activity.fullDescription.raw))}</p>
+                </div>
+            ))}
+        </section>
+    );
+}
