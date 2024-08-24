@@ -1,7 +1,7 @@
 import puppeteer from 'puppeteer';
-import path from 'path';
 import { createServer } from 'http-server';
-import { exec } from 'child_process';
+import { sanitizeTitle } from "../src/utils/stringUtils";
+import path from "node:path";
 
 (async () => {
     const serveDirectory = path.join(path.resolve(), 'public');
@@ -16,8 +16,12 @@ import { exec } from 'child_process';
             const url = 'http://localhost:9000';
             await page.goto(url, { waitUntil: 'networkidle2' });
 
+            // Get the page title
+            const title = await page.title();
+            const sanitizedTitle = sanitizeTitle(title);
+
             // Generate PDF
-            const pdfPath = path.join(path.resolve(), 'public', 'resume.pdf');
+            const pdfPath = path.join(path.resolve(), 'public', `${sanitizedTitle}.pdf`);
             await page.pdf({ path: pdfPath, format: 'A4', printBackground: true });
 
             await browser.close();

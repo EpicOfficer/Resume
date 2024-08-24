@@ -1,7 +1,7 @@
 import "../scss/site.scss"
 import * as React from "react"
 import {graphql, type PageProps} from "gatsby"
-import {Col, Container, Row} from "react-bootstrap"
+import {Button, Col, Container, Row} from "react-bootstrap"
 import Avatar from "../components/Avatar"
 import DetailsSection from "../components/DetailsSection";
 import LinksSection from "../components/LinksSection";
@@ -12,6 +12,7 @@ import EmploymentHistorySection from "../components/EmploymentHistorySection";
 import HobbiesSection from "../components/HobbiesSection";
 import ActivitiesSection from "../components/ActivitiesSection";
 import Sections from "../components/Sections";
+import {sanitizeTitle} from "../utils/stringUtils";
 
 export const query = graphql`
     query Portfolio {
@@ -49,6 +50,12 @@ const IndexPage = ({data}: PageProps<Queries.PortfolioQuery>) => {
                             jobTitle={portfolio.details?.jobTitle}
                             image={portfolio.details?.profileImage?.gatsbyImage} />
 
+                    <Button variant="outline-light" size="sm" as="a" download
+                            href={sanitizeTitle(portfolio.title) + ".pdf"}
+                            className="mb-4 w-100 d-print-none">
+                        Download PDF
+                    </Button>
+                    
                     <DetailsSection details={portfolio.details}/>
                     <LinksSection links={portfolio.details?.links}/>
                     <LanguagesSection languages={portfolio.languages}/>
