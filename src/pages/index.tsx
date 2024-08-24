@@ -12,7 +12,7 @@ import EmploymentHistorySection from "../components/EmploymentHistorySection";
 import HobbiesSection from "../components/HobbiesSection";
 import ActivitiesSection from "../components/ActivitiesSection";
 import Sections from "../components/Sections";
-import {sanitizeTitle} from "../utils/stringUtils";
+import { sanitizeTitle } from "../utils/stringUtils";
 
 export const query = graphql`
     query Portfolio {
