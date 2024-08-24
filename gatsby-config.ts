@@ -37,6 +37,14 @@ const config: GatsbyConfig = {
             spaceId: process.env.CONTENTFUL_SPACE_ID!,
             accessToken: process.env.CONTENTFUL_ACCESS_TOKEN!,
         },
+    }, {
+        resolve: `gatsby-plugin-google-fonts`,
+        options: {
+            fonts: [
+                `merriweather\:400,700` // you can pick the font weights you deem necessary
+            ],
+            display: 'swap' // ensures the font displays correctly while loading
+        }
     }]
 };
 
