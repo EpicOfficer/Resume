@@ -35,56 +35,37 @@ h4 {
 }
 
 @media print {
+  @page {
+    size: auto;
+    margin: 0mm; // Minimum page margins
+  }
+
+  body {
+    -webkit-print-color-adjust: exact; // Forcing background graphics to be printed in WebKit browsers
+    print-color-adjust: exact; // Forcing background graphics to be printed in other browsers
+  }
+
+  header, footer {
+    display: none;
+  }
+  
   :root {
-    font-size: 12px;
+    font-size: 13px;
   }
 
   .skill {
-    margin-bottom: 0.5rem !important;
+    margin-bottom: 0.75rem !important;
   }
 
-  .row:not(:last-child) {
-    page-break-after: always
+  .row {
+    min-height: 100vh;
+    
+    &:not(:last-child) {
+      page-break-after: always
+    }
   }
 
   .container {
     max-width: 100%;
-  }
-
-  .bg-dark {
-    background-color: $light !important;
-  }
-
-  .text-light {
-    color: $dark !important;
-  }
-
-  .progress {
-    position: relative;
-    background-color: transparent;
-    border: 1px solid $dark;
-    height: 0.75rem;
-
-    &:before {
-      display: block;
-      content: '';
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      z-index: 0;
-      border-bottom: 0.75rem solid $progress-bar-bg;
-    }
-
-    &-bar {
-      background-color: transparent;
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      z-index: 1;
-      border-bottom: 0.75rem solid $progress-bg;
-    }
   }
 }
