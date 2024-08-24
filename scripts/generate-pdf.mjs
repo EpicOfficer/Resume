@@ -1,6 +1,6 @@
 import puppeteer from 'puppeteer';
 import { createServer } from 'http-server';
-import { sanitizeTitle } from "../src/utils/stringUtils";
+import { sanitizeTitle } from "../src/utils/stringUtils.js";
 import path from "node:path";
 
 (async () => {
