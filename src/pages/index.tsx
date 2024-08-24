@@ -50,8 +50,9 @@ const IndexPage = ({data}: PageProps<Queries.PortfolioQuery>) => {
                             jobTitle={portfolio.details?.jobTitle}
                             image={portfolio.details?.profileImage?.gatsbyImage} />
 
-                    <Button variant="outline-light" size="sm" as="a" download
-                            href={sanitizeTitle(portfolio.title) + ".pdf"}
+                    <Button variant="outline-light" size="sm" as="a"
+                            download={sanitizeTitle(portfolio.title)+".pdf"}
+                            href="export.pdf"
                             className="mb-4 w-100 d-print-none">
                         Download PDF
                     </Button>

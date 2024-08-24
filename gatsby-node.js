@@ -1,22 +1,29 @@
-// gatsby-node.js
 const { exec } = require('child_process');
 const path = require('path');
 
-exports.onPostBuild = async () => {
-    console.log("Gatsby build is complete. Running post-build script...");
+exports.onPostBuild = async ({ reporter }) => {
+    reporter.info("Gatsby build is complete. Running post-build script...");
+
     const scriptPath = path.join(__dirname, 'scripts', 'generate-pdf.mjs');
-    console.log(`Executing script at path: ${scriptPath}`);
+    reporter.info(`Executing script at path: ${scriptPath}`);
+
+    // Logging the current working directory
+    reporter.info(`Current working directory: ${process.cwd()}`);
 
     exec(`node ${scriptPath}`, (error, stdout, stderr) => {
         if (error) {
-            console.error(`Error generating PDF: ${error.message}`);
+            reporter.panicOnBuild('Post-build script failed', error);
             return;
         }
+
         if (stderr) {
-            console.error(`Error: ${stderr}`);
-            return;
+            reporter.warn(stderr);
         }
-        console.log(stdout);
-        console.log("Post-build script executed successfully.");
+
+        if (stdout) {
+            reporter.info(stdout);
+        }
+
+        reporter.info("Post-build script executed successfully.");
     });
 };

@@ -1,6 +1,5 @@
 import puppeteer from 'puppeteer';
 import { createServer } from 'http-server';
-import { sanitizeTitle } from '../src/utils/sanitizeTitle.mjs';
 import path from "node:path";
 
 (async () => {
@@ -16,18 +15,14 @@ import path from "node:path";
             const url = 'http://localhost:9000';
             await page.goto(url, { waitUntil: 'networkidle2' });
 
-            // Get the page title
-            const title = await page.title();
-            const sanitizedTitle = sanitizeTitle(title);
-
             // Generate PDF
-            const pdfPath = path.join(path.resolve(), 'public', `${sanitizedTitle}.pdf`);
+            const pdfPath = path.join(path.resolve(), 'public', 'export.pdf');
             await page.pdf({ path: pdfPath, format: 'A4', printBackground: true });
 
             await browser.close();
-            console.log('PDF generated successfully!');
+            process.stdout.write('PDF generated successfully!\n');
         } catch (err) {
-            console.error('Error generating PDF:', err);
+            process.stdout.write('Error generating PDF:' + err + '\n');
         } finally {
             server.close();
         }
