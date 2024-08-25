@@ -1,4 +1,5 @@
 import type {GatsbyConfig} from "gatsby";
+import path from "node:path";
 
 require("dotenv").config({
     path: `.env.${process.env.NODE_ENV}`,

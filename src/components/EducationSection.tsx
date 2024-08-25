@@ -2,6 +2,7 @@ import {formatDate} from "../utils/dateUtils";
 import {documentToReactComponents} from "@contentful/rich-text-react-renderer";
 import * as React from "react";
 import {graphql} from "gatsby";
+import {richTextRenderOptions} from "../utils/richTextRenderOptions";
 
 type EducationProps = {
     education: Queries.Maybe<ReadonlyArray<Queries.Maybe<Queries.EducationFieldsFragment>>>
@@ -26,7 +27,7 @@ export default function EducationSection({education}: EducationProps) {
                 <div key={index}>
                     <h3>{edu?.institutionName}</h3>
                     <h4>{formatDate(edu?.startDate)}{edu?.endDate && ` - ${formatDate(edu.endDate)}`}</h4>
-                    {edu?.description?.raw && documentToReactComponents(JSON.parse(edu.description.raw))}
+                    {edu?.description?.raw && documentToReactComponents(JSON.parse(edu.description.raw), richTextRenderOptions)}
                 </div>
             ))}
         </section>

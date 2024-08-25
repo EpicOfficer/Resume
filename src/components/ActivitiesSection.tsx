@@ -1,6 +1,7 @@
 import {documentToReactComponents} from "@contentful/rich-text-react-renderer";
 import * as React from "react";
 import {graphql} from "gatsby";
+import {richTextRenderOptions} from "../utils/richTextRenderOptions";
 
 type ActivitiesProps = {
     activities: Queries.Maybe<ReadonlyArray<Queries.Maybe<Queries.ActivitiesFieldsFragment>>>
@@ -25,7 +26,7 @@ export default function ActivitiesSection({activities}: ActivitiesProps) {
                 <div key={index}>
                     <h3>{activity?.title}, {activity?.location}</h3>
                     <h4>{activity?.year}</h4>
-                    {activity?.fullDescription?.raw && documentToReactComponents(JSON.parse(activity.fullDescription.raw))}
+                    {activity?.fullDescription?.raw && documentToReactComponents(JSON.parse(activity.fullDescription.raw), richTextRenderOptions)}
                 </div>
             ))}
         </section>
