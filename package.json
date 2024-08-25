@@ -26,22 +26,26 @@
     "gatsby-plugin-image": "^3.13.1",
     "gatsby-plugin-manifest": "^5.13.1",
     "gatsby-plugin-mdx": "^5.13.1",
-    "gatsby-plugin-sass": "^6.13.1",
     "gatsby-plugin-sharp": "^5.13.1",
     "gatsby-source-contentful": "^8.13.2",
     "gatsby-source-filesystem": "^5.13.1",
     "gatsby-transformer-sharp": "^5.13.1",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-import": "^16.1.0",
+    "postcss-preset-env": "^10.0.2",
     "puppeteer": "^23.1.1",
     "react": "^18.2.0",
-    "react-bootstrap": "^2.10.3",
     "react-dom": "^18.2.0",
     "sass": "^1.77.6",
     "ts-node": "^10.9.2"
   },
   "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^6.0.0",
     "@types/node": "^20.11.19",
     "@types/react": "^18.2.55",
     "@types/react-dom": "^18.2.19",
+    "gatsby-plugin-purgecss": "^6.2.1",
+    "gatsby-plugin-sass": "^6.13.1",
     "http-server": "^14.1.1",
     "typescript": "^5.3.3"
   }

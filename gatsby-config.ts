@@ -13,6 +13,12 @@ const config: GatsbyConfig = {
     // Learn more at: https://gatsby.dev/graphql-typegen
     graphqlTypegen: true,
     plugins: ["gatsby-plugin-sass", "gatsby-plugin-image", "gatsby-plugin-sharp", "gatsby-transformer-sharp", {
+        resolve: `gatsby-plugin-purgecss`,
+        options: {
+            printRejected: true, // Print removed selectors and processed file names
+            develop: true // Enable while using `gatsby develop`
+        },
+    }, {
         resolve: 'gatsby-plugin-manifest',
         options: {
             "icon": "src/images/profile.png"

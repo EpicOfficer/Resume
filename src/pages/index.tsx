@@ -1,7 +1,5 @@
-import "../scss/site.scss"
 import * as React from "react"
-import {graphql, type PageProps} from "gatsby"
-import {Button, Col, Container, Row} from "react-bootstrap"
+import { graphql, type PageProps } from "gatsby"
 import Avatar from "../components/Avatar"
 import DetailsSection from "../components/DetailsSection";
 import LinksSection from "../components/LinksSection";
@@ -30,10 +28,8 @@ export const query = graphql`
     }
 `
 
-const leftColumnClassNames = "p-4 pb-2 p-sm-3 p-lg-4 p-xl-5 bg-dark text-light";
-const rightColumnClassNames = "p-4 pb-2 p-sm-3 p-lg-4 p-xl-5";
-const leftColumnCountSm = 4;
-const leftColumnCountLg = 3;
+const leftColumnClassNames = "col-sm-4 col-lg-3 p-4 pb-2 p-sm-3 p-lg-4 p-xl-5 bg-dark text-light";
+const rightColumnClassNames = "col p-4 pb-2 p-sm-3 p-lg-4 p-xl-5";
 
 export const Head = ({data}: PageProps<Queries.PortfolioQuery>) => (
     <title>{data.contentfulPortfolio?.title ?? "Resume"}</title>
@@ -43,40 +39,39 @@ const IndexPage = ({data}: PageProps<Queries.PortfolioQuery>) => {
     const portfolio = data.contentfulPortfolio!
 
     return (
-        <Container>
-            <Row>
-                <Col sm={leftColumnCountSm} lg={leftColumnCountLg} className={leftColumnClassNames}>
+        <div className="container">
+            <div className="row">
+                <div className={leftColumnClassNames}>
                     <Avatar name={portfolio.details?.fullName}
                             jobTitle={portfolio.details?.jobTitle}
                             image={portfolio.details?.profileImage?.gatsbyImage} />
 
-                    <Button variant="outline-light" size="sm" as="a"
-                            download={sanitizeTitle(portfolio.title)+".pdf"}
-                            href="export.pdf"
-                            className="mb-4 w-100 d-print-none">
+                    <a className="btn btn-outline-light btn-sm mb-4 w-100 d-print-none"
+                       download={sanitizeTitle(portfolio.title)+".pdf"}
+                       href="/export.pdf">
                         Download PDF
-                    </Button>
+                    </a>
                     
                     <DetailsSection details={portfolio.details}/>
                     <LinksSection links={portfolio.details?.links}/>
                     <LanguagesSection languages={portfolio.languages}/>
                     <SkillsSection skills={portfolio.skills}/>
-                </Col>
-                <Col className={rightColumnClassNames}>
+                </div>
+                <div className={rightColumnClassNames}>
                     <Sections sections={portfolio.sections}/>
                     <EmploymentHistorySection employmentHistory={portfolio.employmentHistory}/>
                     <EducationSection education={portfolio.education}/>
-                </Col>
-            </Row>
-            <Row>
-                <Col sm={leftColumnCountSm} lg={leftColumnCountLg} className={leftColumnClassNames}>
+                </div>
+            </div>
+            <div className="row">
+                <div className={leftColumnClassNames}>
                     <HobbiesSection hobbies={portfolio.hobbies}/>
-                </Col>
-                <Col className={rightColumnClassNames}>
+                </div>
+                <div className={rightColumnClassNames}>
                     <ActivitiesSection activities={portfolio.activities}/>
-                </Col>
-            </Row>
-        </Container>
+                </div>
+            </div>
+        </div>
     )
 }
 

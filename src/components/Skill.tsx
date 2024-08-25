@@ -1,18 +1,24 @@
-import * as React from "react"
-import {ProgressBar} from "react-bootstrap";
+import * as React from "react";
 
 interface SkillProps {
-    /* The skill level */
     level: number;
-    /* The children to be displayed */
-    children: React.ReactNode; // this is the type for child components
+    children: React.ReactNode;
 }
 
 export default function Skill({level, children}: SkillProps) {
     return (
         <div className="skill mb-3">
             <p className="mb-0">{children}</p>
-            <ProgressBar now={level / 5 * 100}></ProgressBar>
+            <div className="progress">
+                <div
+                    className="progress-bar"
+                    role="progressbar"
+                    style={{ width: `${level / 5 * 100}%` }}
+                    aria-valuenow={level / 5 * 100}
+                    aria-valuemin={0}
+                    aria-valuemax={100}>
+                </div>
+            </div>
         </div>
     );
 }
