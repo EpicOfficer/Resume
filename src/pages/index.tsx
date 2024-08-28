@@ -10,12 +10,16 @@ import EmploymentHistorySection from "../components/EmploymentHistorySection";
 import HobbiesSection from "../components/HobbiesSection";
 import ActivitiesSection from "../components/ActivitiesSection";
 import Sections from "../components/Sections";
+import SEO from "../components/SEO";
 import { sanitizeTitle } from "../utils/sanitizeTitle";
+import {handleKeywords} from "../utils/handleKeywords";
 
 export const query = graphql`
     query Portfolio {
         contentfulPortfolio {
-            title
+            title,
+            description { description },
+            keywords,
             skills { ...SkillFields }
             sections { ...SectionFields }
             languages { ...LanguageFields }
@@ -39,39 +43,46 @@ const IndexPage = ({data}: PageProps<Queries.PortfolioQuery>) => {
     const portfolio = data.contentfulPortfolio!
 
     return (
-        <div className="container">
-            <div className="row">
-                <div className={leftColumnClassNames}>
-                    <Avatar name={portfolio.details?.fullName}
-                            jobTitle={portfolio.details?.jobTitle}
-                            image={portfolio.details?.profileImage?.gatsbyImage} />
+        <>
+            <SEO title={portfolio.title ?? "Resume"}
+                 description={portfolio.description?.description}
+                 keywords={handleKeywords(portfolio.keywords)}
+                 author={portfolio.details?.fullName}
+                />
+            <div className="container">
+                <div className="row">
+                    <div className={leftColumnClassNames}>
+                        <Avatar name={portfolio.details?.fullName}
+                                jobTitle={portfolio.details?.jobTitle}
+                                image={portfolio.details?.profileImage?.gatsbyImage}/>
 
-                    <a className="btn btn-outline-light btn-sm mb-4 w-100 d-print-none"
-                       download={sanitizeTitle(portfolio.title)+".pdf"}
-                       href="/export.pdf">
-                        Download PDF
-                    </a>
-                    
-                    <DetailsSection details={portfolio.details}/>
-                    <LinksSection links={portfolio.details?.links}/>
-                    <LanguagesSection languages={portfolio.languages}/>
-                    <SkillsSection skills={portfolio.skills}/>
+                        <a className="btn btn-outline-light btn-sm mb-4 w-100 d-print-none"
+                           download={sanitizeTitle(portfolio.title) + ".pdf"}
+                           href="/export.pdf">
+                            Download PDF
+                        </a>
+
+                        <DetailsSection details={portfolio.details}/>
+                        <LinksSection links={portfolio.details?.links}/>
+                        <LanguagesSection languages={portfolio.languages}/>
+                        <SkillsSection skills={portfolio.skills}/>
+                    </div>
+                    <div className={rightColumnClassNames}>
+                        <Sections sections={portfolio.sections}/>
+                        <EmploymentHistorySection employmentHistory={portfolio.employmentHistory}/>
+                        <EducationSection education={portfolio.education}/>
+                    </div>
                 </div>
-                <div className={rightColumnClassNames}>
-                    <Sections sections={portfolio.sections}/>
-                    <EmploymentHistorySection employmentHistory={portfolio.employmentHistory}/>
-                    <EducationSection education={portfolio.education}/>
+                <div className="row">
+                    <div className={leftColumnClassNames}>
+                        <HobbiesSection hobbies={portfolio.hobbies}/>
+                    </div>
+                    <div className={rightColumnClassNames}>
+                        <ActivitiesSection activities={portfolio.activities}/>
+                    </div>
                 </div>
             </div>
-            <div className="row">
-                <div className={leftColumnClassNames}>
-                    <HobbiesSection hobbies={portfolio.hobbies}/>
-                </div>
-                <div className={rightColumnClassNames}>
-                    <ActivitiesSection activities={portfolio.activities}/>
-                </div>
-            </div>
-        </div>
+        </>
     )
 }
 
