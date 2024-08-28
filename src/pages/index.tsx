@@ -46,6 +46,7 @@ const IndexPage = ({data}: PageProps<Queries.PortfolioQuery>) => {
         <>
             <SEO title={portfolio.title ?? "Resume"}
                  description={portfolio.description?.description}
+                 image={portfolio.details?.socialImage?.resize?.src}
                  keywords={handleKeywords(portfolio.keywords)}
                  author={portfolio.details?.fullName}
                 />
@@ -54,7 +55,7 @@ const IndexPage = ({data}: PageProps<Queries.PortfolioQuery>) => {
                     <div className={leftColumnClassNames}>
                         <Avatar name={portfolio.details?.fullName}
                                 jobTitle={portfolio.details?.jobTitle}
-                                image={portfolio.details?.profileImage?.gatsbyImage}/>
+                                image={portfolio.details?.profileImage?.gatsbyImageData}/>
 
                         <a className="btn btn-outline-light btn-sm mb-4 w-100 d-print-none"
                            download={sanitizeTitle(portfolio.title) + ".pdf"}

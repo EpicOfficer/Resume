@@ -7,8 +7,8 @@ interface SEOProps {
     keywords?: (string | null)[];
     author?: string | null;
     lang?: string;
+    image?: string | null;
     meta?: { name: string; content: string }[];
-    ogDescription?: string | null;
 }
 
 const SEO: React.FC<SEOProps> = ({
@@ -17,8 +17,8 @@ const SEO: React.FC<SEOProps> = ({
                                      keywords = [],
                                      author = "",
                                      lang = "en",
-                                     meta = [],
-                                     ogDescription
+                                     image = "",
+                                     meta = []
                                  }) => {
     const validKeywords = keywords?.filter(keyword => keyword !== null).join(", ") || "";
 
@@ -47,11 +47,19 @@ const SEO: React.FC<SEOProps> = ({
                 },
                 {
                     property: `og:description`,
-                    content: ogDescription || description || "",
+                    content: description || "",
                 },
                 {
                     property: `og:type`,
                     content: `website`,
+                },
+                {
+                    property: `og:image`,
+                    content: image || "",
+                },
+                {
+                    name: `twitter:card`,
+                    content: `summary_large_image`,
                 },
                 {
                     name: `twitter:title`,
@@ -60,6 +68,10 @@ const SEO: React.FC<SEOProps> = ({
                 {
                     name: `twitter:description`,
                     content: description || "",
+                },
+                {
+                    name: `twitter:image`,
+                    content: image || "",
                 },
                 ...meta,
             ]}

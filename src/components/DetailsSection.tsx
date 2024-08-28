@@ -13,14 +13,15 @@ export const query = graphql`
         location
         phone
         profileImage {
-            gatsbyImage(width: 160, height: 160)
-            file {
-                details {
-                    image {
-                        width
-                        height
-                    }
-                }
+            gatsbyImageData(
+                width: 160,
+                height: 160,
+                placeholder: BLURRED,
+                formats: [AUTO, WEBP, AVIF])
+        }
+        socialImage: profileImage {
+            resize(width: 1200, height: 630, format: PNG) {
+                src
             }
         }
         links {
