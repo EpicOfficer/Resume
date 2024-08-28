@@ -17,7 +17,7 @@ h4 {
 @media print {
   // Override col width on print view
   @include media-breakpoint-up(sm) {
-    .col-md-4 {
+    .col-lg-4 {
       width: 33.33333333%;
     }
   }

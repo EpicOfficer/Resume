@@ -32,8 +32,8 @@ export const query = graphql`
     }
 `
 
-const leftColumnClassNames = "col-md-4 col-lg-3 p-4 pb-2 p-sm-3 p-lg-4 p-xl-5 bg-dark text-light";
-const rightColumnClassNames = "col p-4 pb-2 p-sm-3 p-lg-4 p-xl-5";
+const leftColumnClassNames = "col-lg-4 col-xxl-3 p-4 p-xl-5 pb-2 bg-dark text-light";
+const rightColumnClassNames = "col p-4 p-xl-5 pb-2";
 
 export const Head = ({data}: PageProps<Queries.PortfolioQuery>) => (
     <title>{data.contentfulPortfolio?.title ?? "Resume"}</title>
