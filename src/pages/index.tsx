@@ -13,6 +13,7 @@ import Sections from "../components/Sections";
 import SEO from "../components/SEO";
 import { sanitizeTitle } from "../utils/sanitizeTitle";
 import {handleKeywords} from "../utils/handleKeywords";
+import { FaDownload } from "react-icons/fa6";
 
 export const query = graphql`
     query Portfolio {
@@ -35,16 +36,12 @@ export const query = graphql`
 const leftColumnClassNames = "col-lg-4 col-xxl-3 p-4 p-xl-5 pb-2 bg-dark text-light";
 const rightColumnClassNames = "col p-4 p-xl-5 pb-2";
 
-export const Head = ({data}: PageProps<Queries.PortfolioQuery>) => (
-    <title>{data.contentfulPortfolio?.title ?? "Resume"}</title>
-);
-
 const IndexPage = ({data}: PageProps<Queries.PortfolioQuery>) => {
     const portfolio = data.contentfulPortfolio!
 
     return (
         <>
-            <SEO title={portfolio.title ?? "Resume"}
+            <SEO title={portfolio.title?.trim() ?? "Resume"}
                  description={portfolio.description?.description}
                  image={portfolio.details?.socialImage?.resize?.src}
                  keywords={handleKeywords(portfolio.keywords)}
@@ -57,9 +54,10 @@ const IndexPage = ({data}: PageProps<Queries.PortfolioQuery>) => {
                                 jobTitle={portfolio.details?.jobTitle}
                                 image={portfolio.details?.profileImage?.gatsbyImageData}/>
 
-                        <a className="btn btn-outline-light btn-sm mb-4 w-100 d-print-none"
+                        <a className="btn btn-outline-light btn-sm mb-4 w-100 d-print-none d-flex align-items-center justify-content-center"
                            download={sanitizeTitle(portfolio.title) + ".pdf"}
                            href="/export.pdf">
+                            <FaDownload className="me-2" />
                             Download PDF
                         </a>
 
