@@ -6,9 +6,14 @@ export async function onRequest(context) {
     if (url.pathname === '/.well-known/webfinger') {
         // Parse the query parameters
         const resource = url.searchParams.get('resource');
+        const rel = url.searchParams.get('rel');
 
-        // Check if the resource is valid (e.g., starts with "acct:")
-        if (resource && resource.startsWith('acct:')) {
+        // Validate the resource and rel parameters
+        if (
+            resource &&
+            resource.startsWith('acct:') &&
+            rel === 'http://openid.net/specs/connect/1.0/issuer'
+        ) {
             const account = resource.substring(5);
 
             // Construct the WebFinger response using environment variables
@@ -18,20 +23,18 @@ export async function onRequest(context) {
                     {
                         "rel": "http://openid.net/specs/connect/1.0/issuer",
                         "href": env.OIDC_ISSUER_URL  // Use OIDC issuer URL from environment variable
-                    },
-                    {
-                        "rel": "http://schemas.google.com/g/2010#updates-from",
-                        "href": `${env.SITE_URL}/~${account}` // Use BASE_URL from environment variable
                     }
                 ]
             };
 
             return new Response(JSON.stringify(webfingerResponse), {
-                headers: { 'Content-Type': 'application/json' },
+                headers: {
+                    'Content-Type': 'application/jrd+json', // Set the correct content type
+                },
             });
         } else {
             // Return a 400 Bad Request for invalid requests
-            return new Response('Invalid resource parameter', { status: 400 });
+            return new Response('Invalid resource or rel parameter', { status: 400 });
         }
     }
 
