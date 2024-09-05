@@ -2,6 +2,9 @@ export async function onRequest(context) {
     const { request, env } = context;
     const url = new URL(request.url);
 
+    // Parse the query parameters
+    const resource = url.searchParams.get('resource');
+
     // Validate the resource and rel parameters
     if (resource && resource.startsWith('acct:')) {
         // Construct the WebFinger response using environment variables
