@@ -136,7 +136,15 @@ const IndexPage = ({ data }: PageProps<any>) => {
     const locale = profile.node_locale;
 
     const skills = dedupeByContentfulId(data?.allContentfulResumeSkill?.nodes ?? [], locale);
-    const languages = dedupeByContentfulId(data?.allContentfulResumeLanguage?.nodes ?? [], locale);
+    const languages = dedupeByContentfulId(data?.allContentfulResumeLanguage?.nodes ?? [], locale).sort((a: any, b: any) => {
+        const rank = (name: string) => {
+            const n = (name || "").toLowerCase();
+            if (n.includes("english")) return 0;
+            if (n.includes("danish")) return 1;
+            return 2;
+        };
+        return rank(a?.language) - rank(b?.language);
+    });
     const experience = dedupeByContentfulId(data?.allContentfulResumeExperience?.nodes ?? [], locale);
     const projects = dedupeByContentfulId(data?.allContentfulResumeProject?.nodes ?? [], locale);
     const education = dedupeByContentfulId(data?.allContentfulResumeEducation?.nodes ?? [], locale);
@@ -208,9 +216,17 @@ const IndexPage = ({ data }: PageProps<any>) => {
                         <section className="resume-card print-priority">
                             <h2 className="section-title">Links</h2>
                             <ul className="link-list">
-                                {mainLinks.map((link) => (
-                                    <li key={link.name}><a href={link.url} target="_blank" rel="noopener noreferrer">{link.name}</a></li>
-                                ))}
+                                {mainLinks.map((link) => {
+                                    const printableUrl = link.url.replace(/^https?:\/\//, "").replace(/\/$/, "");
+                                    return (
+                                        <li key={link.name}>
+                                            <a href={link.url} target="_blank" rel="noopener noreferrer">
+                                                <span className="link-label">{link.name}</span>
+                                                <span className="link-url">{printableUrl}</span>
+                                            </a>
+                                        </li>
+                                    );
+                                })}
                             </ul>
                         </section>
 
@@ -255,7 +271,7 @@ const IndexPage = ({ data }: PageProps<any>) => {
                         </section>
 
                         {!!safeList(profile.interests).length && (
-                            <section className="resume-card print-secondary">
+                            <section className="resume-card print-secondary print-hide-compact">
                                 <h2 className="section-title">Interests</h2>
                                 <ul className="pill-list">
                                     {safeList(profile.interests).map((x) => <li key={x}>{x}</li>)}
@@ -284,7 +300,7 @@ const IndexPage = ({ data }: PageProps<any>) => {
                         </section>
 
                         {!!projects.length && (
-                            <section className="resume-card print-secondary">
+                            <section className="resume-card print-secondary print-hide-compact">
                                 <h2 className="section-title">Projects & Initiatives</h2>
                                 <div className="project-grid">
                                     {projects.map((p: any, idx: number) => (
@@ -299,7 +315,7 @@ const IndexPage = ({ data }: PageProps<any>) => {
                         )}
 
                         {!!education.length && (
-                            <section className="resume-card print-secondary">
+                            <section className="resume-card print-secondary print-hide-compact">
                                 <h2 className="section-title">Education & Certifications</h2>
                                 <div className="stack-list">
                                     {education.map((ed: any, idx: number) => (
