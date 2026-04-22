@@ -1,0 +1,10 @@
+node_modules/
+.cache/
+public
+src/gatsby-types.d.ts
+.DS_Store
+.env.*
+.env
+!/.DS_Store
+backups/
+*.local.json

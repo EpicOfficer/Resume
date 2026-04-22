@@ -1,0 +1,63 @@
+{
+  "name": "resume",
+  "version": "1.0.0",
+  "private": true,
+  "description": "resume",
+  "author": "EpicOfficer",
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "build:pdf": "SKIP_PDF_POSTBUILD=1 gatsby build && npm run export:pdf",
+    "export:pdf": "node scripts/generate-pdf.mjs",
+    "contentful:reconfigure": "node scripts/contentful-reconfigure.mjs",
+    "contentful:remove-legacy": "node scripts/contentful-remove-legacy.mjs",
+    "contentful:tune-copy": "node scripts/contentful-tune-copy.mjs",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@contentful/rich-text-react-renderer": "^15.22.9",
+    "@mdx-js/react": "^3.0.1",
+    "@types/http-server": "^0.12.4",
+    "@types/puppeteer": "^5.4.7",
+    "@types/react-helmet": "^6.1.11",
+    "bootstrap": "^5.3.3",
+    "gatsby": "^5.13.5",
+    "gatsby-plugin-google-fonts": "^1.0.1",
+    "gatsby-plugin-image": "^3.13.1",
+    "gatsby-plugin-manifest": "^5.13.1",
+    "gatsby-plugin-mdx": "^5.13.1",
+    "gatsby-plugin-preact": "^7.13.1",
+    "gatsby-plugin-sharp": "^5.13.1",
+    "gatsby-source-contentful": "^8.13.2",
+    "gatsby-source-filesystem": "^5.13.1",
+    "gatsby-transformer-sharp": "^5.13.1",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-import": "^16.1.0",
+    "postcss-preset-env": "^10.0.2",
+    "preact": "^10.23.2",
+    "preact-render-to-string": "^6.5.9",
+    "puppeteer": "^23.1.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-helmet": "^6.1.0",
+    "react-icons": "^5.3.0",
+    "sass": "^1.77.6",
+    "ts-node": "^10.9.2"
+  },
+  "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^6.0.0",
+    "@types/node": "^20.11.19",
+    "@types/react": "^18.2.55",
+    "@types/react-dom": "^18.2.19",
+    "gatsby-plugin-purgecss": "^6.2.1",
+    "gatsby-plugin-sass": "^6.13.1",
+    "http-server": "^14.1.1",
+    "typescript": "^5.3.3"
+  }
+}

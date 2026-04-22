@@ -1,0 +1,22 @@
+$enable-dark-mode: true;
+
+$font-family-sans-serif: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+$headings-font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+$headings-font-weight: 620;
+
+$primary: #8fa2d8;
+$secondary: #8f9aac;
+$success: #3ecf8e;
+$body-bg: #0e1118;
+$body-color: #e8edf6;
+
+$border-radius: 0.75rem;
+$border-radius-sm: 0.5rem;
+$border-radius-lg: 0.95rem;
+
+$line-height-base: 1.52;
+
+$h1-font-size: clamp(1.65rem, 3.1vw, 2.35rem);
+$h2-font-size: clamp(1.04rem, 1.6vw, 1.24rem);
+$h3-font-size: 0.98rem;
+$h4-font-size: 0.84rem;
