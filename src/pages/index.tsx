@@ -271,7 +271,7 @@ const IndexPage = ({ data }: PageProps<any>) => {
                         </section>
 
                         {!!safeList(profile.interests).length && (
-                            <section className="resume-card print-secondary print-hide-compact">
+                            <section className="resume-card print-secondary">
                                 <h2 className="section-title">Interests</h2>
                                 <ul className="pill-list">
                                     {safeList(profile.interests).map((x) => <li key={x}>{x}</li>)}
@@ -300,7 +300,7 @@ const IndexPage = ({ data }: PageProps<any>) => {
                         </section>
 
                         {!!projects.length && (
-                            <section className="resume-card print-secondary print-hide-compact">
+                            <section className="resume-card print-secondary">
                                 <h2 className="section-title">Projects & Initiatives</h2>
                                 <div className="project-grid">
                                     {projects.map((p: any, idx: number) => (
@@ -315,7 +315,7 @@ const IndexPage = ({ data }: PageProps<any>) => {
                         )}
 
                         {!!education.length && (
-                            <section className="resume-card print-secondary print-hide-compact">
+                            <section className="resume-card print-secondary">
                                 <h2 className="section-title">Education & Certifications</h2>
                                 <div className="stack-list">
                                     {education.map((ed: any, idx: number) => (

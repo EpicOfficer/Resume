@@ -19,8 +19,7 @@ async function generatePdf() {
         await page.pdf({
             path: pdfPath,
             format: "A4",
-            scale: 0.8,
-            pageRanges: "1",
+            scale: 0.95,
             printBackground: true,
             preferCSSPageSize: true,
             margin: { top: "0", right: "0", bottom: "0", left: "0" }

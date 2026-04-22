@@ -399,40 +399,40 @@ button:focus-visible {
 
   @page {
     size: A4;
-    margin: 6mm;
+    margin: 8mm;
   }
 
   html,
   body {
     background: #fff !important;
     color: #11131a !important;
-    font-size: 8.6pt;
-    line-height: 1.2;
+    font-size: 9.2pt;
+    line-height: 1.24;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
 
   h1 {
-    font-size: 14.5pt !important;
-    margin-bottom: 0.05rem !important;
+    font-size: 16pt !important;
+    margin-bottom: 0.1rem !important;
   }
 
   h2 {
-    font-size: 9.5pt !important;
-    margin-bottom: 0.2rem !important;
+    font-size: 10.2pt !important;
+    margin-bottom: 0.3rem !important;
   }
 
   h3 {
-    font-size: 8.9pt !important;
-    margin-bottom: 0 !important;
+    font-size: 9.3pt !important;
+    margin-bottom: 0.04rem !important;
   }
 
   p,
   li,
   a,
   span {
-    font-size: 8.1pt !important;
-    line-height: 1.16 !important;
+    font-size: 8.5pt !important;
+    line-height: 1.2 !important;
   }
 
   .resume-shell {
@@ -452,22 +452,22 @@ button:focus-visible {
   }
 
   .hero-panel {
-    padding: 0 0 0.1rem;
-    margin-bottom: 0.15rem;
-    gap: 0.12rem;
+    padding: 0 0 0.2rem;
+    margin-bottom: 0.25rem;
+    gap: 0.2rem;
     border-bottom: 1px solid #cfd7e4 !important;
   }
 
   .hero-profile {
-    margin-bottom: 0.2rem;
+    margin-bottom: 0.35rem;
   }
 
   .hero-summary {
-    display: none !important;
+    margin: 0 0 0.25rem;
   }
 
   .hero-tags {
-    display: none !important;
+    display: flex !important;
   }
 
   .impact-panel {
@@ -486,12 +486,15 @@ button:focus-visible {
   }
 
   .resume-grid {
-    display: block;
+    grid-template-columns: 35% 1fr;
+    gap: 0.32rem;
+    align-items: start;
   }
 
   .resume-sidebar,
   .resume-main {
-    display: block;
+    display: grid;
+    gap: 0.24rem;
   }
 
   .resume-card {
@@ -499,19 +502,19 @@ button:focus-visible {
     break-inside: avoid;
     page-break-inside: avoid;
     border-top: 0.5px solid #d7dfea !important;
-    padding-top: 0.1rem;
-    margin-bottom: 0.14rem;
+    padding-top: 0.12rem;
+    margin-bottom: 0;
   }
 
   .skill-stack,
   .stack-list,
   .project-grid,
   .timeline {
-    gap: 0.16rem;
+    gap: 0.24rem;
   }
 
   .timeline {
-    padding-left: 0.42rem;
+    padding-left: 0.55rem;
   }
 
   .timeline::before {
@@ -519,27 +522,21 @@ button:focus-visible {
   }
 
   .timeline-item::before {
-    left: -0.51rem;
-    width: 0.24rem;
-    height: 0.24rem;
-    top: 0.2rem;
+    left: -0.63rem;
+    width: 0.3rem;
+    height: 0.3rem;
+    top: 0.24rem;
   }
 
   .skill-item__track {
-    display: none !important;
-  }
-
-  .resume-sidebar .skill-item:nth-child(n + 7) {
-    display: none !important;
-  }
-
-  .timeline-item .mb-2 {
-    display: none !important;
+    height: 0.24rem;
+    margin-top: 0.08rem;
+    border: 0.5px solid #bfc9d8 !important;
   }
 
   .hero-avatar {
-    width: 54px;
-    min-width: 54px;
+    width: 60px;
+    min-width: 60px;
     border-width: 0.5px;
   }
 
@@ -568,10 +565,6 @@ button:focus-visible {
 
   .link-url {
     display: inline;
-  }
-
-  .print-hide-compact {
-    display: none !important;
   }
 
   .print-secondary {
