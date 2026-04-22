@@ -389,6 +389,8 @@ button:focus-visible {
 
 @media print {
   :root {
+    color-scheme: light !important;
+    background: #fff !important;
     --bg: #ffffff;
     --surface: #ffffff;
     --surface-soft: #ffffff;
@@ -403,7 +405,9 @@ button:focus-visible {
   }
 
   html,
-  body {
+  body,
+  #___gatsby,
+  #gatsby-focus-wrapper {
     background: #fff !important;
     color: #11131a !important;
     font-size: 9.2pt;
